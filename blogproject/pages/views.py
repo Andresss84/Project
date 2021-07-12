@@ -45,3 +45,9 @@ def blog_detail(request, pk):
         'form': form
     }
     return render(request, 'blog_detail.html', context)
+def category_list(request):
+    posts = Post.objects.all().order_by("-created_on")
+    context = {
+        'posts': posts,
+    }
+    return render(request, 'base.html', context)
